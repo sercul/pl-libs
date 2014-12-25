@@ -1,0 +1,33 @@
+Please, note that this version of Yii framework has been customized by us.
+To find all changes just read docs AND/OR compare it with original code in "distr" folder.
+
+============================
+
+CClientScript.php file was completely replaced with the same file from the distr yii-1.1.13.e9e4a0.
+It was done after integrating into our project Imperavi Yii widget that requires some new methods of CClientScript.
+
+After that it was found this class uses a more new version of jQuery.
+That's why web/js folder was replaced with the same folder from the distr yii-1.1.13.e9e4a0.
+The old folder was saved under the name web/js.old.
+
+=============================
+
+CJavascriptExpression was copied from the distr yii-1.1.13.e9e4a0.
+It did not exist in the used version.
+
+CJavaScript file was replaced with newer version too to make correct encoding of CJavascriptExpression.
+
+This file was required for yiichat extension that we tested for the possibility of using it as helpdesk livechat.
+
+=============================
+!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!
+
+In the process of implementing previous changes it was found that yii-1.1.13.e9e4a0 is probably the last version of yii 1.1, and further 2.0 version will not be compatible with the previous releases.
+
+That's why I'm not sure that we will ever need upgrade to 2.0 because it may be too time-consuming.
+And if you will ever think about upgrade you will need to upgrade to yii-1.1.13.e9e4a0 only.
+
+=============================
+
+CSecurityManager.php was replaced with the same file in Version 1.1.15. 
+In new version, there is a method called generateRandomString() which we used in Customer.php on frontend app.

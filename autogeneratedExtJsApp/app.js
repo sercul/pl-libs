@@ -1,0 +1,1 @@
+Ext.require(['Ext.app.Application','Ext.data.JsonStore','Ext.layout.*','Ext.chart.*']);
