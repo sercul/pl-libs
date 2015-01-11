@@ -41,15 +41,15 @@ class ModelCommand extends CConsoleCommand
 
 	private $_schema;
 	
-	// changed by TSS:
+	// changed by Plexisoft:
 	// 'private' was replaced with 'protected' to allow access in CustomModelCommand.php
 	protected $_relations; // where we keep table relations
 	
-	// changed by TSS:
+	// changed by Plexisoft:
 	// 'private' was replaced with 'protected' to allow access in CustomModelCommand.php
 	protected $_tables;
 	
-	// changed by TSS:
+	// changed by Plexisoft:
 	// 'private' was replaced with 'protected' to allow access in CustomModelCommand.php
 	protected $_classes;
 
@@ -194,7 +194,7 @@ EOD;
 	 * @param string the table name
 	 * @return string the generated model class name
 	 */
-	// changed by TSS:
+	// changed by Plexisoft:
 	// protected was changed to public
 	public function generateClassName($tableName)
 	{

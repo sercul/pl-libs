@@ -278,7 +278,7 @@ class CActiveForm extends CWidget
 	 */
 	public $enableClientValidation=false;
 	
-	// added by TSS:
+	// added by Plexisoft:
 	public $validateOnBlur=false;
 
 	/**
@@ -435,13 +435,13 @@ class CActiveForm extends CWidget
 			'model'=>get_class($model),
 			'name'=>$attribute,
 			'enableAjaxValidation'=>$enableAjaxValidation,
-			'validateOnBlur'=>$this->validateOnBlur // added by TSS
+			'validateOnBlur'=>$this->validateOnBlur // added by Plexisoft
 		);
 
 		$optionNames=array(
 			'validationDelay',
 			'validateOnChange',
-			'validateOnBlur', // added by TSS
+			'validateOnBlur', // added by Plexisoft
 			'validateOnType',
 			'hideErrorMessage',
 			'inputContainer',
