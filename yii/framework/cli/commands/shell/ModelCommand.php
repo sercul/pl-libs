@@ -52,6 +52,13 @@ class ModelCommand extends CConsoleCommand
 	// changed by Plexisoft:
 	// 'private' was replaced with 'protected' to allow access in CustomModelCommand.php
 	protected $_classes;
+        
+        /**
+	 * @var bool.
+	 * Defaults to false.
+	 * If this is true relations with customizable (prefixed with _) tables will be skipped.
+	 */
+        protected $skipCustomTablesRelations = false;
 
 	public function getHelp()
 	{
@@ -140,8 +147,11 @@ EOD;
 		$this->_relations=array();
 		$this->_classes=array();
 		foreach($this->_schema->getTables() as $table)
-		{
+		{                        
 			$tableName=$table->name;
+                        
+                        if($this->skipCustomTablesRelations && substr($tableName, 0, 1) == '_')
+                            continue;
 
 			if ($this->isRelationTable($table))
 			{
