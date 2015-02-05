@@ -39,7 +39,7 @@ class ModelCommand extends CConsoleCommand
 	 */
 	public $unitTestPath;
 
-	private $_schema;
+	protected $_schema;
 	
 	// changed by Plexisoft:
 	// 'private' was replaced with 'protected' to allow access in CustomModelCommand.php
@@ -52,13 +52,6 @@ class ModelCommand extends CConsoleCommand
 	// changed by Plexisoft:
 	// 'private' was replaced with 'protected' to allow access in CustomModelCommand.php
 	protected $_classes;
-        
-        /**
-	 * @var bool.
-	 * Defaults to false.
-	 * If this is true relations with not customizable tables and customizable (prefixed with _) tables will be skipped.
-	 */
-        protected $skipCustomTablesRelations = false;
 
 	public function getHelp()
 	{
@@ -146,12 +139,10 @@ EOD;
 	{
 		$this->_relations=array();
 		$this->_classes=array();
-                
 		foreach($this->_schema->getTables() as $table)
-		{                  
+		{
 			$tableName=$table->name;
-                        
-                        
+
 			if ($this->isRelationTable($table))
 			{
 				$pks=$table->primaryKey;
@@ -159,21 +150,16 @@ EOD;
 
 				$table0=$fks[$pks[1]][0];
 				$table1=$fks[$pks[0]][0];
-                                
 				$className0=$this->getClassName($table0);
 				$className1=$this->getClassName($table1);
-                                
+
 				$unprefixedTableName=$this->removePrefix($tableName,true);
-                                
-                                if(!$this->checkToSkipLikeCustomTableRelaion($table0, $table1)) {
-                                    $relationName=$this->generateRelationName($table0, $table1, true);
-                                    $this->_relations[$className0][$relationName]="array(self::MANY_MANY, '$className1', '$unprefixedTableName($pks[0], $pks[1])')";
-                                }
-                                
-                                if(!$this->checkToSkipLikeCustomTableRelaion($table1, $table0)) {
-                                    $relationName=$this->generateRelationName($table1, $table0, true);
-                                    $this->_relations[$className1][$relationName]="array(self::MANY_MANY, '$className0', '$unprefixedTableName($pks[0], $pks[1])')";
-                                }
+
+				$relationName=$this->generateRelationName($table0, $table1, true);
+				$this->_relations[$className0][$relationName]="array(self::MANY_MANY, '$className1', '$unprefixedTableName($pks[0], $pks[1])')";
+
+				$relationName=$this->generateRelationName($table1, $table0, true);
+				$this->_relations[$className1][$relationName]="array(self::MANY_MANY, '$className0', '$unprefixedTableName($pks[0], $pks[1])')";
 			}
 			else
 			{
@@ -184,19 +170,15 @@ EOD;
 					$refTable=$fkEntry[0]; // Table name that current fk references to
 					$refKey=$fkEntry[1];   // Key in that table being referenced
 					$refClassName=$this->getClassName($refTable);
-                                        
-                                        if(!$this->checkToSkipLikeCustomTableRelaion($tableName, $refTable)){
-                                            // Add relation for this table
-                                            $relationName=$this->generateRelationName($tableName, $fkName, false);
-                                            $this->_relations[$className][$relationName]="array(self::BELONGS_TO, '$refClassName', '$fkName')";
-                                        }
-                                        
-                                        if(!$this->checkToSkipLikeCustomTableRelaion($refTable, $tableName)){
-                                            // Add relation for the referenced table
-                                            $relationType=$table->primaryKey === $fkName ? 'HAS_ONE' : 'HAS_MANY';
-                                            $relationName=$this->generateRelationName($refTable, $this->removePrefix($tableName), $relationType==='HAS_MANY');
-                                            $this->_relations[$refClassName][$relationName]="array(self::$relationType, '$className', '$fkName')";
-                                        }
+
+					// Add relation for this table
+					$relationName=$this->generateRelationName($tableName, $fkName, false);
+					$this->_relations[$className][$relationName]="array(self::BELONGS_TO, '$refClassName', '$fkName')";
+
+					// Add relation for the referenced table
+					$relationType=$table->primaryKey === $fkName ? 'HAS_ONE' : 'HAS_MANY';
+					$relationName=$this->generateRelationName($refTable, $this->removePrefix($tableName), $relationType==='HAS_MANY');
+					$this->_relations[$refClassName][$relationName]="array(self::$relationType, '$className', '$fkName')";
 				}
 			}
 		}
@@ -206,17 +188,7 @@ EOD;
 	{
 		return isset($this->_tables[$tableName]) ? $this->_tables[$tableName] : $this->generateClassName($tableName);
 	}
-        
-        protected function isCustomTable($tableName)
-	{
-		return substr($tableName, 0, 1) == '_' ? true : false;
-	}
-        
-        protected function checkToSkipLikeCustomTableRelaion($mainTable, $relatedTable)
-	{
-		return ($this->isCustomTable($mainTable) || (!$this->isCustomTable($mainTable) && !$this->isCustomTable($relatedTable)) || !$this->skipCustomTablesRelations) ? false : true;
-	}
-        
+
 	/**
 	 * Generates model class name based on a table name
 	 * @param string the table name
@@ -467,8 +439,8 @@ EOD;
 			}
 			if($safe!==array())
 				$rules[]="array('".implode(', ',$safe)."', 'safe')";
-                        
-			if(isset($this->_relations[$className]) && is_array($this->_relations[$className])) 
+
+			if(isset($this->_relations[$className]) && is_array($this->_relations[$className]))
 				$relations=$this->_relations[$className];
 		}
 		else
