@@ -37,7 +37,7 @@ class <?php echo $className; ?> extends CActiveRecord
 	public function tableName()
 	{
 		return '<?php 
-			// changed by TSS:
+			// changed by Plexisoft:
 			// conditional insertion of {{ }} was added,
 			// earlier these brackets appeared "randomly", so it was more simple to do so than searching the bug
 			if (false === strpos ($tableName, "{{")) echo "{{".$tableName."}}";
@@ -53,7 +53,7 @@ class <?php echo $className; ?> extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		
-		// changed by TSS:
+		// changed by Plexisoft:
 		// before returning array is passed through parent::rules()
 		// it is done to allow common preprocessing of all rules of all models in the application;
 		// you will see this comment in all models classes, but in fact it was added inside the view of "model" command in 
@@ -77,7 +77,7 @@ class <?php echo $className; ?> extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		
-		// changed by TSS:
+		// changed by Plexisoft:
 		// before returning array is passed through parent::relations()
 		// it is done to allow common preprocessing of all relations of all models in the application;
 		// you will see this comment in all models classes, but in fact it was added inside the view of "model" command in 
@@ -95,7 +95,7 @@ class <?php echo $className; ?> extends CActiveRecord
 	 */
 	public function attributeLabels()
 	{
-		// changed by TSS:
+		// changed by Plexisoft:
 		// before returning array is passed through parent::attributeLabels()()
 		// it is done to allow common preprocessing of all labels of all models in the application;
 		// you will see this comment in all models classes, but in fact it was added inside the view of "model" command in 

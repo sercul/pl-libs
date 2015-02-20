@@ -71,9 +71,9 @@ class EEmbeddedArraysBehavior extends EMongoDocumentBehavior
 		// Test if we have correct embding class
 		if(!is_subclass_of($this->arrayDocClassName, 'EMongoEmbeddedDocument'))
 			throw new CException(Yii::t('yii', get_class($testObj).' is not a child class of EMongoEmbeddedDocument!'));
-		
+
 		$this->_embeddedOwner = !($owner instanceof EMongoDocument);
-		
+
 		parent::attach($owner);
 
 		$this->parseExistingArray();
