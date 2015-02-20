@@ -1,0 +1,597 @@
+[
+    {
+        "name": "psr/log",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-fig/log.git",
+            "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
+            "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
+            "shasum": ""
+        },
+        "time": "2012-12-21 11:40:51",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Psr\\Log\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }
+        ],
+        "description": "Common interface for logging libraries",
+        "keywords": [
+            "log",
+            "psr",
+            "psr-3"
+        ]
+    },
+    {
+        "name": "symfony/event-dispatcher",
+        "version": "v2.6.4",
+        "version_normalized": "2.6.4.0",
+        "target-dir": "Symfony/Component/EventDispatcher",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/EventDispatcher.git",
+            "reference": "f75989f3ab2743a82fe0b03ded2598a2b1546813"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/f75989f3ab2743a82fe0b03ded2598a2b1546813",
+            "reference": "f75989f3ab2743a82fe0b03ded2598a2b1546813",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "psr/log": "~1.0",
+            "symfony/config": "~2.0,>=2.0.5",
+            "symfony/dependency-injection": "~2.6",
+            "symfony/expression-language": "~2.6",
+            "symfony/stopwatch": "~2.3"
+        },
+        "suggest": {
+            "symfony/dependency-injection": "",
+            "symfony/http-kernel": ""
+        },
+        "time": "2015-02-01 16:10:57",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.6-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\Component\\EventDispatcher\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            },
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Symfony EventDispatcher Component",
+        "homepage": "http://symfony.com"
+    },
+    {
+        "name": "guzzle/guzzle",
+        "version": "v3.9.2",
+        "version_normalized": "3.9.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/guzzle/guzzle3.git",
+            "reference": "54991459675c1a2924122afbb0e5609ade581155"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/guzzle/guzzle3/zipball/54991459675c1a2924122afbb0e5609ade581155",
+            "reference": "54991459675c1a2924122afbb0e5609ade581155",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "php": ">=5.3.3",
+            "symfony/event-dispatcher": "~2.1"
+        },
+        "replace": {
+            "guzzle/batch": "self.version",
+            "guzzle/cache": "self.version",
+            "guzzle/common": "self.version",
+            "guzzle/http": "self.version",
+            "guzzle/inflection": "self.version",
+            "guzzle/iterator": "self.version",
+            "guzzle/log": "self.version",
+            "guzzle/parser": "self.version",
+            "guzzle/plugin": "self.version",
+            "guzzle/plugin-async": "self.version",
+            "guzzle/plugin-backoff": "self.version",
+            "guzzle/plugin-cache": "self.version",
+            "guzzle/plugin-cookie": "self.version",
+            "guzzle/plugin-curlauth": "self.version",
+            "guzzle/plugin-error-response": "self.version",
+            "guzzle/plugin-history": "self.version",
+            "guzzle/plugin-log": "self.version",
+            "guzzle/plugin-md5": "self.version",
+            "guzzle/plugin-mock": "self.version",
+            "guzzle/plugin-oauth": "self.version",
+            "guzzle/service": "self.version",
+            "guzzle/stream": "self.version"
+        },
+        "require-dev": {
+            "doctrine/cache": "~1.3",
+            "monolog/monolog": "~1.0",
+            "phpunit/phpunit": "3.7.*",
+            "psr/log": "~1.0",
+            "symfony/class-loader": "~2.1",
+            "zendframework/zend-cache": "2.*,<2.3",
+            "zendframework/zend-log": "2.*,<2.3"
+        },
+        "time": "2014-08-11 04:32:36",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.9-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Guzzle": "src/",
+                "Guzzle\\Tests": "tests/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Michael Dowling",
+                "email": "mtdowling@gmail.com",
+                "homepage": "https://github.com/mtdowling"
+            },
+            {
+                "name": "Guzzle Community",
+                "homepage": "https://github.com/guzzle/guzzle/contributors"
+            }
+        ],
+        "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
+        "homepage": "http://guzzlephp.org/",
+        "keywords": [
+            "client",
+            "curl",
+            "framework",
+            "http",
+            "http client",
+            "rest",
+            "web service"
+        ]
+    },
+    {
+        "name": "dts/ebay-sdk",
+        "version": "0.1.2",
+        "version_normalized": "0.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/davidtsadler/ebay-sdk.git",
+            "reference": "4e16d7d1e0215dae696f1e2e4a6225e143eeb45f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/davidtsadler/ebay-sdk/zipball/4e16d7d1e0215dae696f1e2e4a6225e143eeb45f",
+            "reference": "4e16d7d1e0215dae696f1e2e4a6225e143eeb45f",
+            "shasum": ""
+        },
+        "require": {
+            "guzzle/guzzle": "~3.7",
+            "php": ">=5.3.9",
+            "psr/log": "~1.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~3.7.0"
+        },
+        "time": "2014-08-25 11:40:05",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "DTS\\eBaySDK\\": "src/",
+                "DTS\\eBaySDK\\Mocks\\": "test/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "David T. Sadler",
+                "email": "davidtsadler@googlemail.com",
+                "homepage": "http://davidtsadler.com"
+            }
+        ],
+        "description": "An eBay SDK for PHP. Use the eBay API in your PHP projects.",
+        "homepage": "http://devbay.net/",
+        "keywords": [
+            "api",
+            "ebay",
+            "sdk"
+        ]
+    },
+    {
+        "name": "dts/ebay-sdk-bulk-data-exchange",
+        "version": "0.1.0",
+        "version_normalized": "0.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/davidtsadler/ebay-sdk-bulk-data-exchange.git",
+            "reference": "93fd8c3b8791602d7f9c4c1b329c03c153570255"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/davidtsadler/ebay-sdk-bulk-data-exchange/zipball/93fd8c3b8791602d7f9c4c1b329c03c153570255",
+            "reference": "93fd8c3b8791602d7f9c4c1b329c03c153570255",
+            "shasum": ""
+        },
+        "require": {
+            "dts/ebay-sdk": "~0.1",
+            "php": ">=5.3.9"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~3.7.0"
+        },
+        "time": "2014-08-25 12:03:59",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "DTS\\eBaySDK\\BulkDataExchange\\": "src/",
+                "DTS\\eBaySDK\\BulkDataExchange\\Mocks\\": "test/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "David T. Sadler",
+                "email": "davidtsadler@googlemail.com",
+                "homepage": "http://davidtsadler.com"
+            }
+        ],
+        "description": "An eBay SDK for PHP. Use the eBay Bulk Data Exchange API in your PHP projects.",
+        "homepage": "https://github.com/davidtsadler/ebay-sdk-bulk-data-exchange",
+        "keywords": [
+            "api",
+            "ebay",
+            "sdk"
+        ]
+    },
+    {
+        "name": "dts/ebay-sdk-half-finding",
+        "version": "0.1.0",
+        "version_normalized": "0.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/davidtsadler/ebay-sdk-half-finding.git",
+            "reference": "f738f8b56c741802b0ea8d20aa548eb423e05336"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/davidtsadler/ebay-sdk-half-finding/zipball/f738f8b56c741802b0ea8d20aa548eb423e05336",
+            "reference": "f738f8b56c741802b0ea8d20aa548eb423e05336",
+            "shasum": ""
+        },
+        "require": {
+            "dts/ebay-sdk": "~0.1",
+            "php": ">=5.3.9"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~3.7.0"
+        },
+        "time": "2014-12-03 13:04:43",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "DTS\\eBaySDK\\HalfFinding\\": "src/",
+                "DTS\\eBaySDK\\HalfFinding\\Mocks\\": "test/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "David T. Sadler",
+                "email": "davidtsadler@googlemail.com",
+                "homepage": "http://davidtsadler.com"
+            }
+        ],
+        "description": "An eBay SDK for PHP. Use the eBay Half Finding API in your PHP projects.",
+        "homepage": "http://devbay.net/",
+        "keywords": [
+            "api",
+            "ebay",
+            "sdk"
+        ]
+    },
+    {
+        "name": "dts/ebay-sdk-finding",
+        "version": "0.2.0",
+        "version_normalized": "0.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/davidtsadler/ebay-sdk-finding.git",
+            "reference": "f55e579146680f933e51c88441c8f0ac836d94fd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/davidtsadler/ebay-sdk-finding/zipball/f55e579146680f933e51c88441c8f0ac836d94fd",
+            "reference": "f55e579146680f933e51c88441c8f0ac836d94fd",
+            "shasum": ""
+        },
+        "require": {
+            "dts/ebay-sdk": "~0.1",
+            "php": ">=5.3.9"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~3.7.0"
+        },
+        "time": "2014-11-26 13:02:06",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "DTS\\eBaySDK\\Finding\\": "src/",
+                "DTS\\eBaySDK\\Finding\\Mocks\\": "test/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "David T. Sadler",
+                "email": "davidtsadler@googlemail.com",
+                "homepage": "http://davidtsadler.com"
+            }
+        ],
+        "description": "An eBay SDK for PHP. Use the eBay Finding API in your PHP projects.",
+        "homepage": "http://devbay.net/",
+        "keywords": [
+            "api",
+            "ebay",
+            "sdk"
+        ]
+    },
+    {
+        "name": "dts/ebay-sdk-trading",
+        "version": "0.12.0",
+        "version_normalized": "0.12.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/davidtsadler/ebay-sdk-trading.git",
+            "reference": "d2a16a9632802cd42d019505607a2f2a8fc3d197"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/davidtsadler/ebay-sdk-trading/zipball/d2a16a9632802cd42d019505607a2f2a8fc3d197",
+            "reference": "d2a16a9632802cd42d019505607a2f2a8fc3d197",
+            "shasum": ""
+        },
+        "require": {
+            "dts/ebay-sdk": "~0.1",
+            "php": ">=5.3.9"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~3.7.0"
+        },
+        "time": "2014-12-31 17:47:37",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "DTS\\eBaySDK\\Trading\\": "src/",
+                "DTS\\eBaySDK\\Trading\\Mocks\\": "test/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "David T. Sadler",
+                "email": "davidtsadler@googlemail.com",
+                "homepage": "http://davidtsadler.com"
+            }
+        ],
+        "description": "An eBay SDK for PHP. Use the eBay Trading API in your PHP projects.",
+        "homepage": "http://devbay.net/",
+        "keywords": [
+            "api",
+            "ebay",
+            "sdk"
+        ]
+    },
+    {
+        "name": "dts/ebay-sdk-shopping",
+        "version": "0.5.0",
+        "version_normalized": "0.5.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/davidtsadler/ebay-sdk-shopping.git",
+            "reference": "69334af1c5bf4df34be6d5625a9a1158881289fe"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/davidtsadler/ebay-sdk-shopping/zipball/69334af1c5bf4df34be6d5625a9a1158881289fe",
+            "reference": "69334af1c5bf4df34be6d5625a9a1158881289fe",
+            "shasum": ""
+        },
+        "require": {
+            "dts/ebay-sdk": "~0.1",
+            "php": ">=5.3.9"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~3.7.0"
+        },
+        "time": "2014-12-31 17:55:28",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "DTS\\eBaySDK\\Shopping\\": "src/",
+                "DTS\\eBaySDK\\Shopping\\Mocks\\": "test/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "David T. Sadler",
+                "email": "davidtsadler@googlemail.com",
+                "homepage": "http://davidtsadler.com"
+            }
+        ],
+        "description": "An eBay SDK for PHP. Use the eBay Shopping API in your PHP projects.",
+        "homepage": "http://devbay.net/",
+        "keywords": [
+            "api",
+            "ebay",
+            "sdk"
+        ]
+    },
+    {
+        "name": "dts/ebay-sdk-business-policies-management",
+        "version": "0.1.3",
+        "version_normalized": "0.1.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/davidtsadler/ebay-sdk-business-policies-management.git",
+            "reference": "c4f1cb1f50f64bfb0fb26a20a81030317b09cf5b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/davidtsadler/ebay-sdk-business-policies-management/zipball/c4f1cb1f50f64bfb0fb26a20a81030317b09cf5b",
+            "reference": "c4f1cb1f50f64bfb0fb26a20a81030317b09cf5b",
+            "shasum": ""
+        },
+        "require": {
+            "dts/ebay-sdk": "~0.1",
+            "php": ">=5.3.9"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~3.7.0"
+        },
+        "time": "2014-08-25 13:25:33",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "DTS\\eBaySDK\\BusinessPoliciesManagement\\": "src/",
+                "DTS\\eBaySDK\\BusinessPoliciesManagement\\Mocks\\": "test/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "David T. Sadler",
+                "email": "davidtsadler@googlemail.com",
+                "homepage": "http://davidtsadler.com"
+            }
+        ],
+        "description": "An eBay SDK for PHP. Use the eBay Business Policies Management API in your PHP projects.",
+        "homepage": "http://devbay.net/",
+        "keywords": [
+            "api",
+            "ebay",
+            "sdk"
+        ]
+    },
+    {
+        "name": "dts/ebay-sdk-file-transfer",
+        "version": "0.2.0",
+        "version_normalized": "0.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/davidtsadler/ebay-sdk-file-transfer.git",
+            "reference": "0fe86e765d27811845634c4dc239bec4c4591211"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/davidtsadler/ebay-sdk-file-transfer/zipball/0fe86e765d27811845634c4dc239bec4c4591211",
+            "reference": "0fe86e765d27811845634c4dc239bec4c4591211",
+            "shasum": ""
+        },
+        "require": {
+            "dts/ebay-sdk": "~0.1",
+            "php": ">=5.3.9"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~3.7.0"
+        },
+        "time": "2014-09-08 11:16:07",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "DTS\\eBaySDK\\FileTransfer\\": "src/",
+                "DTS\\eBaySDK\\FileTransfer\\Mocks\\": "test/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "David T. Sadler",
+                "email": "davidtsadler@googlemail.com",
+                "homepage": "http://davidtsadler.com"
+            }
+        ],
+        "description": "An eBay SDK for PHP. Use the eBay File Transfer API in your PHP projects.",
+        "homepage": "http://devbay.net/",
+        "keywords": [
+            "api",
+            "ebay",
+            "sdk"
+        ]
+    }
+]
