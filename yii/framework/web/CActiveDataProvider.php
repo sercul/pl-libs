@@ -135,6 +135,7 @@ class CActiveDataProvider extends CDataProvider
 			$baseCriteria=clone $baseCriteria;
 		$data=$this->model->findAll($criteria);
 		$this->model->setDbCriteria($baseCriteria);
+
 		return $data;
 	}
 
