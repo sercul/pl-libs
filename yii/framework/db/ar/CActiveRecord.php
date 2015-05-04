@@ -41,7 +41,10 @@ abstract class CActiveRecord extends CModel
 
 	private $_md;								// meta data
 	private $_new=false;						// whether this instance is new or not
-	private $_attributes=array();				// attribute name => attribute value
+
+    // changed by Plexisoft:
+    // public was changed to protected
+	protected $_attributes=array();				// attribute name => attribute value
 	private $_related=array();					// attribute name => related objects
 	private $_c;								// query criteria (used by finder only)
 	private $_pk;								// old primary key value
