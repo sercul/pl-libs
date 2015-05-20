@@ -92,7 +92,12 @@ class EAjaxUpload extends CWidget
     $config = array(
                                 'id'=>$this->id, // rewritten with Plexisoft
                                 'debug'=>false,
-                                'multiple'=>false
+                                'multiple'=>false,
+                                'template'=> '<div class="qq-uploader">'.
+                                    '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>'.
+                                    '<div class="qq-upload-button glyphicon glyphicon-search" data-toggle="tooltip" data-container="body" data-placement="left" data-original-title="Choose Files"></div>'.
+                                    '<ul class="qq-upload-list"></ul>'.
+                                    '</div>',
                                );
     $config = array_merge($config, $this->config);
     $config['params']=$postParams;
