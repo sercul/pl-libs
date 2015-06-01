@@ -498,7 +498,7 @@ qq.FileUploader = function(o){
                 '<span class="qq-upload-size"></span>' +
                 '<a class="qq-upload-cancel" href="#">Delete</a>' +
                 '<span class="qq-upload-failed-text">Failed</span>' +
-				'<input type="hidden" name="' + o.name + 
+				'<input type="hidden" name="' + o.name +
 					(this._options.isMultiple ? '[filename][]' : '') + // added by Plexisoft
 					'" />' +
 				(this._options.isMultiple ? '<input type="hidden" name="' + o.name + '[name][]" />' : '') + // added by Plexisoft
@@ -524,11 +524,11 @@ qq.FileUploader = function(o){
     });
     // overwrite options with user supplied
     qq.extend(this._options, o);
-	
+
 	// added by Plexisoft
 	this._options.element = document.getElementById(this._options.id);
 	if (this._options.element == null) return;
-	
+
     this._element = this._options.element;
     this._element.innerHTML = this._options.template;
     this._listElement = this._options.listElement || this._find(this._element, 'list');
@@ -621,10 +621,10 @@ qq.extend(qq.FileUploader.prototype, {
 
         // mark completed
         var item = this._getItemByFileId(id);
-		
+
 		// commented out by TSS
         //qq.remove(this._find(item, 'cancel'));
-		
+
         qq.remove(this._find(item, 'spinner'));
 
 		// added by TSS
@@ -633,7 +633,7 @@ qq.extend(qq.FileUploader.prototype, {
 		// added by Plexisoft
 		var input = item.getElementsByTagName("input")[1];
 		input.value = result.originalFilename;
-		
+
         if (result.success){
             qq.addClass(item, this._classes.success);
         } else {
@@ -650,7 +650,7 @@ qq.extend(qq.FileUploader.prototype, {
 
 		// added by TSS to allow uploading only one file:
 		if (!this._options.isMultiple) this._listElement.innerHTML = "";
-		
+
 		// Plexisoft: insertBefore() is made instead of appendChild()
         this._listElement.insertBefore(item, this._listElement.firstChild);
     },
@@ -1259,11 +1259,11 @@ qq.extend(qq.UploadHandlerXhr.prototype, {
     },
     _cancel: function(id){
 		// added by TSS
-		if (!this._options.isMultiple) {		
+		if (!this._options.isMultiple) {
 			qq.innerHTML = "";
 			return;
 		}
-		
+
         this._options.onCancel(id, this.getName(id));
 
         this._files[id] = null;
