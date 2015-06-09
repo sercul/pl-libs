@@ -501,7 +501,16 @@ qq.FileUploader = function(o){
 				'<input type="hidden" name="' + o.name +
 					(this._options.isMultiple ? '[filename][]' : '') + // added by Plexisoft
 					'" />' +
-				(this._options.isMultiple ? '<input type="hidden" name="' + o.name + '[name][]" />' : '') + // added by Plexisoft
+				(this._options.isMultiple ? '<input type="hidden" name="' + o.name + '[name][]" />' : '') +
+
+
+                '<input type="hidden" name="' + o.originalName +
+                (this._options.isMultiple ? '[originalFilename][]' : '') + // added by Plexisoft
+                '" />' +
+                (this._options.isMultiple ? '<input type="hidden" name="' + o.originalName + '[name][]" />' : '') +
+
+
+				 // added by Plexisoft
             '</li>',
 
         classes: {
@@ -626,12 +635,13 @@ qq.extend(qq.FileUploader.prototype, {
         //qq.remove(this._find(item, 'cancel'));
 
         qq.remove(this._find(item, 'spinner'));
-
+        console.log(item.getElementsByTagName("input"));
 		// added by TSS
 		var input = item.getElementsByTagName("input")[0];
 		input.value = result.filename;
 		// added by Plexisoft
-		var input = item.getElementsByTagName("input")[1];
+
+		input = item.getElementsByTagName("input")[1];
 		input.value = result.originalFilename;
 
         if (result.success){
