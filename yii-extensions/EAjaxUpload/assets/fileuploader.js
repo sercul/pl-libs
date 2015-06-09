@@ -503,11 +503,11 @@ qq.FileUploader = function(o){
 					'" />' +
 				(this._options.isMultiple ? '<input type="hidden" name="' + o.name + '[name][]" />' : '') +
 
-
+                (o.originalName !== undefined ?
                 '<input type="hidden" name="' + o.originalName +
                 (this._options.isMultiple ? '[originalFilename][]' : '') + // added by Plexisoft
                 '" />' +
-                (this._options.isMultiple ? '<input type="hidden" name="' + o.originalName + '[name][]" />' : '') +
+                (this._options.isMultiple ? '<input type="hidden" name="' + o.originalName + '[name][]" />' : '') : '') +
 
 
 				 // added by Plexisoft
