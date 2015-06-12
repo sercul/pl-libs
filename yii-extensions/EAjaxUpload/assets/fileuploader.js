@@ -370,6 +370,7 @@ qq.FileUploaderBasic.prototype = {
     },
     _onInputChange: function(input){
         if (this._handler instanceof qq.UploadHandlerXhr){
+
             this._uploadFileList(input.files);
         } else {
             if (this._validateFile(input)){
@@ -826,12 +827,13 @@ qq.UploadButton.prototype = {
         this._input = this._createInput();
     },
     _createInput: function(){
+
         var input = document.createElement("input");
 
         if (this._options.multiple){
             input.setAttribute("multiple", "multiple");
         }
-
+        this._options.name = this._options.name+Date.now();
         input.setAttribute("type", "file");
         input.setAttribute("name", this._options.name);
 
@@ -1177,6 +1179,9 @@ qq.extend(qq.UploadHandlerXhr.prototype, {
      * Returns id to use with upload, cancel
      **/
     add: function(file){
+        if (file.files !== undefined && file.files[0] !== undefined) {
+            file = file.files[0];
+        }
         if (!(file instanceof File)){
             throw new Error('Passed obj in not a File (in qq.UploadHandlerXhr)');
         }
