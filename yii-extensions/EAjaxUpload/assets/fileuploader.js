@@ -833,7 +833,6 @@ qq.UploadButton.prototype = {
         if (this._options.multiple){
             input.setAttribute("multiple", "multiple");
         }
-        this._options.name = this._options.name+Date.now();
         input.setAttribute("type", "file");
         input.setAttribute("name", this._options.name);
 
