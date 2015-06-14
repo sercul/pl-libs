@@ -235,7 +235,7 @@ class NestedSetBehavior extends CActiveRecordBehavior
 			if($owner->isLeaf())
 			{
 				$this->_ignoreEvent=true;
-				$result=$owner->delete();
+				$result=$owner->deleteByPk($owner->id);
 				$this->_ignoreEvent=false;
 			}
 			else

@@ -370,6 +370,7 @@ qq.FileUploaderBasic.prototype = {
     },
     _onInputChange: function(input){
         if (this._handler instanceof qq.UploadHandlerXhr){
+
             this._uploadFileList(input.files);
         } else {
             if (this._validateFile(input)){
@@ -501,7 +502,16 @@ qq.FileUploader = function(o){
 				'<input type="hidden" name="' + o.name +
 					(this._options.isMultiple ? '[filename][]' : '') + // added by Plexisoft
 					'" />' +
-				(this._options.isMultiple ? '<input type="hidden" name="' + o.name + '[name][]" />' : '') + // added by Plexisoft
+				(this._options.isMultiple ? '<input type="hidden" name="' + o.name + '[name][]" />' : '') +
+
+                (o.originalName !== undefined ?
+                '<input type="hidden" name="' + o.originalName +
+                (this._options.isMultiple ? '[originalFilename][]' : '') + // added by Plexisoft
+                '" />' +
+                (this._options.isMultiple ? '<input type="hidden" name="' + o.originalName + '[name][]" />' : '') : '') +
+
+
+				 // added by Plexisoft
             '</li>',
 
         classes: {
@@ -626,12 +636,13 @@ qq.extend(qq.FileUploader.prototype, {
         //qq.remove(this._find(item, 'cancel'));
 
         qq.remove(this._find(item, 'spinner'));
-
+        console.log(item.getElementsByTagName("input"));
 		// added by TSS
 		var input = item.getElementsByTagName("input")[0];
 		input.value = result.filename;
 		// added by Plexisoft
-		var input = item.getElementsByTagName("input")[1];
+
+		input = item.getElementsByTagName("input")[1];
 		input.value = result.originalFilename;
 
         if (result.success){
@@ -816,12 +827,12 @@ qq.UploadButton.prototype = {
         this._input = this._createInput();
     },
     _createInput: function(){
+
         var input = document.createElement("input");
 
         if (this._options.multiple){
             input.setAttribute("multiple", "multiple");
         }
-
         input.setAttribute("type", "file");
         input.setAttribute("name", this._options.name);
 
@@ -1167,6 +1178,9 @@ qq.extend(qq.UploadHandlerXhr.prototype, {
      * Returns id to use with upload, cancel
      **/
     add: function(file){
+        if (file.files !== undefined && file.files[0] !== undefined) {
+            file = file.files[0];
+        }
         if (!(file instanceof File)){
             throw new Error('Passed obj in not a File (in qq.UploadHandlerXhr)');
         }
