@@ -639,11 +639,13 @@ qq.extend(qq.FileUploader.prototype, {
         console.log(item.getElementsByTagName("input"));
 		// added by TSS
 		var input = item.getElementsByTagName("input")[0];
-		input.value = result.filename;
+        if (result.filename !== undefined)
+		    input.value = result.filename;
 		// added by Plexisoft
 
 		input = item.getElementsByTagName("input")[1];
-		input.value = result.originalFilename;
+        if (result.originalFilename !== undefined)
+		    input.value = result.originalFilename;
 
         if (result.success){
             qq.addClass(item, this._classes.success);
