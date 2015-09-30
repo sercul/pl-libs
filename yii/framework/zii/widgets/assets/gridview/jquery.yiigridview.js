@@ -73,7 +73,7 @@
 					$grid = $(this),
 					id = $grid.attr('id'),
 					pagerSelector = '#' + id + ' .' + settings.pagerClass.replace(/\s+/g, '.') + ' a',
-					sortSelector = '#' + id + ' .' + settings.tableClass + ' thead th a',
+					sortSelector = '#' + id + ' .' + settings.tableClass + ' thead th a:not(.advancedGridFilterSort)',
 					inputSelector = '#' + id + ' .' + settings.filterClass + ' input, ' + '#' + id + ' .' + settings.filterClass + ' select';
 
 				settings.updateSelector = settings.updateSelector
@@ -263,6 +263,10 @@
 						if (settings.selectableRows > 0) {
 							selectCheckedRows(id);
 						}
+
+                        if (options.customAfterAjaxUpdate !== undefined) {
+                            options.customAfterAjaxUpdate(id, data);
+                        }
 					},
 					complete: function () {
 						yiiXHR[id] = null;
