@@ -35,8 +35,4 @@ CSecurityManager.php was replaced with the same file in Version 1.1.15.
 In new version, there is a method called generateRandomString() which we used in Customer.php on frontend app.
 
 =============================
-
-All GridView classes and assets were updated to version 1.1.15
-Backups located at:
-libs/yii/framework/zii/widgets/gridOLD
-libs/yii/framework/zii/widgets/assets/gridviewOLD
+To CValidator  added "except" construction according to the Yii version 1.1.15
