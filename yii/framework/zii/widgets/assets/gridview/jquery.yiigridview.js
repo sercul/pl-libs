@@ -73,7 +73,7 @@
 					$grid = $(this),
 					id = $grid.attr('id'),
 					pagerSelector = '#' + id + ' .' + settings.pagerClass.replace(/\s+/g, '.') + ' a',
-					sortSelector = '#' + id + ' .' + settings.tableClass + ' thead th a:not(.advancedGridFilterSort)',
+					sortSelector = '#' + id + ' .' + settings.tableClass + ' thead th > a:not(.advancedGridFilterSort):not(.dropdown-toggle)',
 					inputSelector = '#' + id + ' .' + settings.filterClass + ' input, ' + '#' + id + ' .' + settings.filterClass + ' select';
 
 				settings.updateSelector = settings.updateSelector
