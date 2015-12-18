@@ -74,7 +74,7 @@ class HighchartsWidget extends CWidget
     public $options = array();
     public $htmlOptions = array();
     public $setupOptions = array();
-    public $scripts = array('highcharts-more');
+    public $scripts = array();
     public $callback = false;
     public $scriptPosition = null;
 
