@@ -74,7 +74,7 @@ class HighchartsWidget extends CWidget
     public $options = array();
     public $htmlOptions = array();
     public $setupOptions = array();
-    public $scripts = array();
+    public $scripts = array('highcharts-more');
     public $callback = false;
     public $scriptPosition = null;
 
@@ -119,7 +119,7 @@ class HighchartsWidget extends CWidget
         $cs->registerCoreScript('jquery');
 
         // register additional scripts
-        $extension = YII_DEBUG ? '.src.js' : '.js';
+        $extension = YII_DEBUG ? '.js' : '.js';
         foreach ($this->scripts as $script) {
             $cs->registerScriptFile("{$baseUrl}/{$script}{$extension}", $this->scriptPosition);
         }
