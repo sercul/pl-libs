@@ -60,8 +60,10 @@ Here is your client secret
 
     private function loadFromModel()
     {
-        foreach ($this->modelSettings as $field => $modelField) {
-            $this->{$field} = $this->model->{$modelField};
+        if ( !empty($this->model) ) {
+            foreach ($this->modelSettings as $field => $modelField) {
+                $this->{$field} = $this->model->{$modelField};
+            }
         }
     }
 
