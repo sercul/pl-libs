@@ -18,6 +18,7 @@ Here is your client secret
     ///*TODO EMULATED*/private $profile_id = 115357560;
     /*TODO EMULATED unauthorized*/private $access_token = null;
     /*TODO EMULATED unauthorized*/private $profile_id = null;//115357560;
+    /*TODO EMULATED unauthorized*/private $tracking_code = null;
 //print_r(array($this->service->data_ga->get( 'ga:'.$_primaryProfile->id, '30daysAgo', 'yesterday', 'ga:sessions,ga:users,ga:pageviews,ga:BounceRate,ga:organicSearches,ga:pageviewsPerSession', array() )));
     private $model;
     private $modelSettings;
@@ -89,7 +90,7 @@ Here is your client secret
         return false;
     }
 
-    private function getAccountsProperties()
+    private function getAccountsProperties($profileId = null)
     {
         $accountsProperties = array();
         if ( $this->isActivated() ) {
@@ -102,15 +103,29 @@ Here is your client secret
                             $_profiles = $this->service->management_profiles->listManagementProfiles($_property->accountId, $_property->id);
                             $_primaryProfile = $_profiles->items[0];
                             if ( !empty($_primaryProfile) ) {
-                                $accountsProperties[] = array(
-                                    'selectedProfileId' => $this->profile_id,
-                                    'accountId' => $_property->accountId,
-                                    'id' => $_property->id,
-                                    'internalWebPropertyId' => $_property->internalWebPropertyId,
-                                    'websiteUrl' => $_property->websiteUrl,
-                                    'name' => $_property->name,
-                                    'profileId' => $_primaryProfile->id
-                                );
+                                if ( $profileId > 0 ) {
+                                    if ( $profileId == $_primaryProfile->id ) {
+                                        $accountsProperties = array(
+                                            'selectedProfileId' => $this->profile_id,
+                                            'accountId' => $_property->accountId,
+                                            'id' => $_property->id,
+                                            'internalWebPropertyId' => $_property->internalWebPropertyId,
+                                            'websiteUrl' => $_property->websiteUrl,
+                                            'name' => $_property->name,
+                                            'profileId' => $_primaryProfile->id
+                                        );
+                                    }
+                                } else {
+                                    $accountsProperties[] = array(
+                                        'selectedProfileId' => $this->profile_id,
+                                        'accountId' => $_property->accountId,
+                                        'id' => $_property->id,
+                                        'internalWebPropertyId' => $_property->internalWebPropertyId,
+                                        'websiteUrl' => $_property->websiteUrl,
+                                        'name' => $_property->name,
+                                        'profileId' => $_primaryProfile->id
+                                    );
+                                }
                             }
                         }
                     }
@@ -147,6 +162,23 @@ Here is your client secret
         } elseif ($this->isActivated()) {
             if ( isset($_POST['ga']['profile_id']) ) {
                 $this->profile_id = $_POST['ga']['profile_id'];
+                $properties = $this->getAccountsProperties($this->profile_id);
+
+                if ( !empty($properties) ) {
+                    $this->tracking_code = '
+                        <script>
+                          (function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){
+                          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                          })(window,document,\'script\',\'//www.google-analytics.com/analytics.js\',\'ga\');
+
+                          ga(\'create\', \''.$properties['id'].'\', \'auto\');
+                          ga(\'send\', \'pageview\');
+                        </script>
+                    ';
+                }
+
+
                 $this->updateModel();
             }
             return $this->generalSettings();
@@ -212,23 +244,23 @@ Here is your client secret
                     ))'
                 ),
                 'websiteUrl' => array(
-                    'name' => t('Default URL'),
+                    'name' => 'Default URL',
                     'value' => '$data["websiteUrl"]'
                 ),
                 'profileId' => array(
-                    'name' => t('Account ID'),
+                    'name' => 'Account ID',
                     'value' => '$data["profileId"]'
                 ),
                 'id' => array(
-                    'name' => t('Tracking ID'),
+                    'name' => 'Tracking ID',
                     'value' => '$data["id"]'
                 ),
-                'edit' => array(
-                    'name' => t('Actions'),
+                /*'edit' => array(
+                    'name' => 'Actions',
                     "type" => "raw",
                     'value' => '
                     l("<i class=\"menu-icon glyphicon glyphicon-edit\"></i>", array ("' . Yii::app()->controller->id . '/edit"), array("class" => "btn btn-default"))'
-                ),
+                ),*/
 
 
             ),
@@ -250,7 +282,7 @@ Here is your client secret
         } else {
             $form .='<div class="col-sm-12">';
             $form .= $grid;
-            $form .= '<div class="btn-group-box"><a href="' . app()->controller->createUrl(Yii::app()->controller->id . '/reset').'" class="btn btn-info">'.t("Reset Analytics Connection").'</a>';
+            $form .= '<div class="btn-group-box"><a href="' . app()->controller->createUrl(Yii::app()->controller->id . '/reset').'" class="btn btn-info">Reset Analytics Connection</a>';
             $form .= CHtml::submitButton ("Save", array('class' => 'btn btn-info pull-left'));
             $form .='</div></div>';
         }

@@ -37,6 +37,11 @@ class GoogleAnalyticsWidget extends CWidget
         $this->registerAssets();
     }
 
+    public function isActivated()
+    {
+        return $this->gapi->isActivated();
+    }
+
     /**
      * Publishes and registers the necessary script files.
      */
