@@ -103,6 +103,7 @@ Here is your client secret
                             $_primaryProfile = $_profiles->items[0];
                             if ( !empty($_primaryProfile) ) {
                                 $accountsProperties[] = array(
+                                    'selectedProfileId' => $this->profile_id,
                                     'accountId' => $_property->accountId,
                                     'id' => $_property->id,
                                     'internalWebPropertyId' => $_property->internalWebPropertyId,
@@ -196,7 +197,45 @@ Here is your client secret
 
     private function generalSettings()
     {
-        $form = '<form name="input" action="' . $_SERVER['REQUEST_URI'] . '" method="post">';
+        $dataProvider=new CArrayDataProvider($this->getAccountsProperties());
+
+        $gridClass = new GridView;
+        $grid = $gridClass->widget('GridView', array(
+            'dataProvider'=>$dataProvider,
+            'columns'=>array(
+                array(
+                    'name'=>'Selected Resource',
+                    'type'=>'raw',
+                    'value'=>'CHtml::radioButtonList(\'ga[profile_id]\',$data[\'selectedProfileId\'] ,array($data[\'profileId\'] => $data[\'name\']),array(
+                        \'labelOptions\'=>array(\'style\'=>\'display:inline\'),
+                        \'onclick\'=>\'$(this).closest("form").submit($data)\',
+                    ))'
+                ),
+                'websiteUrl' => array(
+                    'name' => t('Default URL'),
+                    'value' => '$data["websiteUrl"]'
+                ),
+                'profileId' => array(
+                    'name' => t('Account ID'),
+                    'value' => '$data["profileId"]'
+                ),
+                'id' => array(
+                    'name' => t('Tracking ID'),
+                    'value' => '$data["id"]'
+                ),
+                'edit' => array(
+                    'name' => t('Actions'),
+                    "type" => "raw",
+                    'value' => '
+                    l("<i class=\"menu-icon glyphicon glyphicon-edit\"></i>", array ("' . Yii::app()->controller->id . '/edit"), array("class" => "btn btn-default"))'
+                ),
+
+
+            ),
+        ), true);
+
+        $form = '
+        <form name="input" action="' . $_SERVER['REQUEST_URI'] . '" method="post">';
 
         $profileProperties = $this->getAccountsProperties();
         if ( !empty($this->errors) ) {
@@ -210,39 +249,10 @@ Here is your client secret
             $form .='</table>';
         } else {
             $form .='<div class="col-sm-12">';
-            foreach ($profileProperties as $property) {
-                $form .='
-                <div class="col-sm-8">
-                    <div class="form-group">
-                        <label for="profile_id" class="required">Use this site:</label>
-                        <input ' . (($this->profile_id == $property['profileId']) ? 'checked' : '') . ' type="radio" name="ga[profile_id]" id="profile_id" value="' . $property['profileId'] . '">
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="form-group">
-                        Site Name: ' .$property['name'] . '<br />
-                        Tracking ID: ' . $property['id'] . '<br />
-                        Account ID: ' . $property['profileId'] . '<br />
-                        Default URL: ' . $property['websiteUrl'] . '
-                    </div>
-                </div>';
-            }
-            $form .='</div>';
-
-            $form .= '
-                    <div class="col-sm-12">
-                        <div class="col-sm-8">
-                            <div class="form-group">
-                                <hr>
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-info pull-left"  name="ga[choose_profile]" value="Change site" />
-                            </div>
-                        </div>
-                    </div>
-            ';
+            $form .= $grid;
+            $form .= '<div class="btn-group-box"><a href="' . app()->controller->createUrl(Yii::app()->controller->id . '/reset').'" class="btn btn-info">'.t("Reset Analytics Connection").'</a>';
+            $form .= CHtml::submitButton ("Save", array('class' => 'btn btn-info pull-left'));
+            $form .='</div></div>';
         }
 
         $form .= '</form>';
